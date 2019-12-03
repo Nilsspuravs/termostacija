@@ -23,52 +23,53 @@ I = "        "
 data = bme280.sample(bus, address, calibration_params)
 a = 1
 
-button_state1 = GPIO.input(4) #Ja poga ir inputs true
-button_state2 = GPIO.input(18)
-button_state3 = GPIO.input(23)      
-try:
-    while True:
-        a > 0
-        print("Ja velies sanemt datus nospied -c-") #printejam,lai zinatu.
-        if button_state1 == GPIO.LOW: #Ja nospiez pogu, daram to
-                GPIO.output(17,GPIO.HIGH)
-                time.sleep(0.5)
-                GPIO.output(17,GPIO.LOW)
-                print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'),(I), truncate(data.temperature),(I), truncate(data.pressure), file=open("output.txt", "a+"))
-                print(datetime.now().strftime('%Y-%m-%d %H:%M:%S')) #printejam laiku
-                print(truncate(data.temperature)) #printejam temperaturu
-                print(truncate(data.pressure)) #printejam spiedienu
-                print(truncate(data.humidity)) #printejam mitrumu
-                print("""\t \t Ja velies redzet saglabatos datus, nospied
-                 pogu 3 vai -c- uz klaviaturas uz klaviaturas.""") #printejam tekstu
-        if button_state2 == GPIO.LOW:
-                GPIO.output(27,GPIO.HIGH)
-                GPIO.output(17,GPIO.HIGH)
-                GPIO.output(22,GPIO.HIGH)
-                time.sleep(0.5)
-                GPIO.output(27,GPIO.LOW)
-                GPIO.output(17,GPIO.LOW)
-                GPIO.output(22,GPIO.LOW)
-                f = open('output.txt', 'r') #definejam lasit datu failu
-                faila_saturs = f.read() #lasam datu failu
-                print(faila_saturs) #printejam, kas faila
-                f.close() #aizveram datu failu 
-                print("Ja velies beigt nospied. -e-")
+   
+while True:
+        try:
+                button_state1 = GPIO.input(4) #Ja poga ir inputs true
+                button_state2 = GPIO.input(18)
+                button_state3 = GPIO.input(23)
+                print("Ja velies sanemt datus nospied -c-") #printejam,lai zinatu.
+                if button_state1 == GPIO.LOW: #Ja nospiez pogu, daram to
+                        GPIO.output(17,GPIO.HIGH)
+                        time.sleep(0.5)
+                        GPIO.output(17,GPIO.LOW)
+                        print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'),(I), truncate(data.temperature),(I), truncate(data.pressure), file=open("output.txt", "a+"))
+                        print(datetime.now().strftime('%Y-%m-%d %H:%M:%S')) #printejam laiku
+                        print(truncate(data.temperature)) #printejam temperaturu
+                        print(truncate(data.pressure)) #printejam spiedienu
+                        print(truncate(data.humidity)) #printejam mitrumu
+                        print("""\t \t Ja velies redzet saglabatos datus, nospied
+                        pogu 3 vai -c- uz klaviaturas uz klaviaturas.""") #printejam tekstu
+                if button_state2 == GPIO.LOW:
+                        GPIO.output(27,GPIO.HIGH)
+                        GPIO.output(17,GPIO.HIGH)
+                        GPIO.output(22,GPIO.HIGH)
+                        time.sleep(0.5)
+                        GPIO.output(27,GPIO.LOW)
+                        GPIO.output(17,GPIO.LOW)
+                        GPIO.output(22,GPIO.LOW)
+                        f = open('output.txt', 'r') #definejam lasit datu failu
+                        faila_saturs = f.read() #lasam datu failu
+                        print(faila_saturs) #printejam, kas faila
+                        f.close() #aizveram datu failu 
+                        print("Ja velies beigt nospied. -e-")
                
-        if keyboard.read_key() == "c":
-                GPIO.output(27,GPIO.HIGH)
-                GPIO.output(22,GPIO.HIGH)
-                time.sleep(0.5)
-                GPIO.output(22,GPIO.LOW)
-                GPIO.output(27,GPIO.LOW)
-                f = open('output.txt', 'r')
-                faila_saturs = f.read()
-                print(faila_saturs)
-                f.close()
-                print("Ja velies beigt nospied. -e-")
-        if keyboard.read_key() == "e": #ja nospiez uz klaviaturas jebkura bridi
-                break #beidz visu programmu
-        else:
-                print("Kaut kas te nav tirs.")
+                if keyboard.read_key() == "c":
+                        GPIO.output(27,GPIO.HIGH)
+                        GPIO.output(22,GPIO.HIGH)
+                        time.sleep(0.5)
+                        GPIO.output(22,GPIO.LOW)
+                        GPIO.output(27,GPIO.LOW)
+                        f = open('output.txt', 'r')
+                        faila_saturs = f.read()
+                        print(faila_saturs)
+                        f.close()
+                        print("Ja velies beigt nospied. -e-")
+                if keyboard.read_key() == "e": #ja nospiez uz klaviaturas jebkura bridi
+                        break #beidz visu programmu
+                else:
+                        print("Kaut kas te nav tirs.")
+        except Error:
+                print("gg")
                 
-
