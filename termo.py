@@ -11,6 +11,9 @@ GPIO.setup(23, GPIO.IN, GPIO.PUD_UP) #definejm gpio pinu
 GPIO.setup(17,GPIO.OUT)
 GPIO.setup(27,GPIO.OUT)
 GPIO.setup(22,GPIO.OUT)
+button_state1 = GPIO.input(4) #Ja poga ir inputs true
+button_state2 = GPIO.input(18)
+button_state3 = GPIO.input(23)
 def truncate(n): #definejam funkciju lai saisinatu
         return int(n * 10000) / 10000 #funkcija
 
