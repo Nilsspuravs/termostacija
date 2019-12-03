@@ -67,8 +67,3 @@ try:
                 print("Ja velies beigt nospied. -e-")
         if keyboard.read_key() == "e": #ja nospiez uz klaviaturas jebkura bridi
                 break #beidz visu programmu
-                
-                
-
-
-
