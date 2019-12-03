@@ -16,6 +16,7 @@ button_state2 = GPIO.input(18)
 button_state3 = GPIO.input(23)
 def truncate(n): #definejam funkciju lai saisinatu
         return int(n * 10000) / 10000 #funkcija
+        inkey = raw_input()
 
 port = 1
 address = 0x76
@@ -24,19 +25,19 @@ calibration_params = bme280.load_calibration_params(bus, address)
 I = "        "
 data = bme280.sample(bus, address, calibration_params)
 a = 1
-print("Ja velies nolasit datus nospied pogu 3")
-print("Ja velies redzet saglabatos datus datus nospied pogu 2")
-print("Ja velies nolasit datus nospied pogu 2")
+print("Ja velies nolasit datus nospied pogu 1")
+print("Ja velies redzet saglabatos datus datus nospied pogu 2 vai uz klaviaturas -c-")
+print("Ja velies beigt, nospied -e-")
 
    
 try:
         a = 1
         while True:
-                button_state1 = GPIO.input(4) #Ja poga ir inputs true
+                button_state3 = GPIO.input(4) #Ja poga ir inputs true
                 button_state2 = GPIO.input(18)
                 button_state3 = GPIO.input(23)
                 
-                if button_state2 == GPIO.LOW: #Ja nospiez pogu, daram to
+                if button_state1 == GPIO.LOW: #Ja nospiez pogu, daram to
                         GPIO.output(17,GPIO.HIGH)
                         time.sleep(0.5)
                         GPIO.output(17,GPIO.LOW)
@@ -61,7 +62,7 @@ try:
                         f.close() #aizveram datu failu 
                       
                
-                if button_state3 == GPIO.LOW:
+                if inkey == "c":
                         GPIO.output(27,GPIO.HIGH)
                         GPIO.output(22,GPIO.HIGH)
                         time.sleep(0.5)
@@ -71,9 +72,10 @@ try:
                         faila_saturs = f.read()
                         print(faila_saturs)
                         f.close()
-                        
+                if inkey == "e":
+                        break
                 else:
-                        time.sleep(1)
+                        time.sleep(0.5)
 except KeyboardInterrupt:
                 print("/n")
 finally:
