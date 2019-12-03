@@ -26,13 +26,16 @@ data = bme280.sample(bus, address, calibration_params)
 a = 1
 
    
-while True:
+try:
         a = 1
-        try:
+        while True:
+                button_state1 = GPIO.input(4) #Ja poga ir inputs true
+                button_state2 = GPIO.input(18)
+                button_state3 = GPIO.input(23)
                 print("Ja velies sanemt datus nospied -c-") #printejam,lai zinatu.
                 if button_state1 == GPIO.LOW: #Ja nospiez pogu, daram to
                         GPIO.output(17,GPIO.HIGH)
-                        time.sleep(0.5)
+                        time.sleep(1)
                         GPIO.output(17,GPIO.LOW)
                         print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'),(I), truncate(data.temperature),(I), truncate(data.pressure), file=open("output.txt", "a+"))
                         print(datetime.now().strftime('%Y-%m-%d %H:%M:%S')) #printejam laiku
