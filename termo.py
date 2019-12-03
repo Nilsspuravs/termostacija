@@ -37,7 +37,7 @@ try:
                 button_state2 = GPIO.input(18)
                 button_state3 = GPIO.input(23)
                 
-                if button_state1 == GPIO.LOW: #Ja nospiez pogu, daram to
+                if button_state3 == GPIO.LOW: #Ja nospiez pogu, daram to
                         GPIO.output(17,GPIO.HIGH)
                         time.sleep(0.5)
                         GPIO.output(17,GPIO.LOW)
@@ -63,7 +63,7 @@ try:
                       
                
                 
-                if button_state3 == GPIO.LOW:
+                if button_state1 == GPIO.LOW:
                         break
                 else:
                         time.sleep(0.5)
