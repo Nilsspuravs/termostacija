@@ -71,8 +71,8 @@ try:
                         print("Ja velies beigt nospied. -e-")
                 else:
                         time.sleep(1)
-        except KeyboardInterrupt:
+except KeyboardInterrupt:
                 print("/n")
-        finally:
+finally:
             GPIO.cleanup()
                 
