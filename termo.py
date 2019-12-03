@@ -66,7 +66,9 @@ while True:
                         f.close()
                         print("Ja velies beigt nospied. -e-")
                 else:
-                        print("Kaut kas te nav tirs.")
-        except Error:
-                print("gg")
+                        time.sleep(1)
+        except KeyboardInterrupt:
+                print("/n")
+        finally:
+            GPIO.cleanup()
                 
