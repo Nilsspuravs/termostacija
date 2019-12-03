@@ -64,9 +64,12 @@ try:
                
                 
                 if button_state1 == GPIO.LOW:
+                        GPIO.output(17,GPIO.HIGH)
+                        time.sleep(0.5)
+                        GPIO.output(17,GPIO.LOW)
                         break
                 else:
-                        time.sleep(0.5)
+                        time.sleep(0.1)
 except KeyboardInterrupt:
                 print("/n")
 finally:
