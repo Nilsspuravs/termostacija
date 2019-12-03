@@ -16,7 +16,7 @@ button_state2 = GPIO.input(18)
 button_state3 = GPIO.input(23)
 def truncate(n): #definejam funkciju lai saisinatu
         return int(n * 10000) / 10000 #funkcija
-        inkey = raw_input()
+        
 
 port = 1
 address = 0x76
