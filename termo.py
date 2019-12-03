@@ -2,7 +2,6 @@ import smbus2 #importejam lib
 import bme280 #importejam lib
 from datetime import datetime #importejam lib
 import time #importejam lib
-import keyboard #importejam lib
 import RPi.GPIO as GPIO #importejam lib
 GPIO.setmode(GPIO.BCM) #nomainam gpio modu
 GPIO.setwarnings(False) #izsledzam bridinajums 
@@ -55,7 +54,7 @@ while True:
                         f.close() #aizveram datu failu 
                         print("Ja velies beigt nospied. -e-")
                
-                if keyboard.read_key() == "c":
+                if button_state3 == GPIO.LOW:
                         GPIO.output(27,GPIO.HIGH)
                         GPIO.output(22,GPIO.HIGH)
                         time.sleep(0.5)
