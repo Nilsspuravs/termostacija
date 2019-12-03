@@ -62,17 +62,8 @@ try:
                         f.close() #aizveram datu failu 
                       
                
-                if inkey == "c":
-                        GPIO.output(27,GPIO.HIGH)
-                        GPIO.output(22,GPIO.HIGH)
-                        time.sleep(0.5)
-                        GPIO.output(22,GPIO.LOW)
-                        GPIO.output(27,GPIO.LOW)
-                        f = open('output.txt', 'r')
-                        faila_saturs = f.read()
-                        print(faila_saturs)
-                        f.close()
-                if inkey == "e":
+                
+                if button_state3 == GPIO.LOW:
                         break
                 else:
                         time.sleep(0.5)
