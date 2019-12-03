@@ -9,29 +9,26 @@ GPIO.setwarnings(False) #izsledzam bridinajums
 GPIO.setup(4, GPIO.IN, GPIO.PUD_UP) #definejm gpio pinu
 GPIO.setup(18, GPIO.IN, GPIO.PUD_UP) #definejm gpio pinu
 GPIO.setup(23, GPIO.IN, GPIO.PUD_UP) #definejm gpio pinu
+GPIO.setup(17,GPIO.OUT)
+GPIO.setup(27,GPIO.OUT)
+GPIO.setup(22,GPIO.OUT)
+def truncate(n): #definejam funkciju lai saisinatu
+        return int(n * 10000) / 10000 #funkcija
+
 port = 1
 address = 0x76
 bus = smbus2.SMBus(port)
 calibration_params = bme280.load_calibration_params(bus, address)
 I = "        "
 data = bme280.sample(bus, address, calibration_params)
+a = 1
 
-
-print("DOne") #izprintejam, la zinatu ka viss kartiba
-
-
-def truncate(n): #definejam funkciju lai saisinatu
-        return int(n * 10000) / 10000 #funkcija
-
-
-
-
-        
+button_state1 = GPIO.input(4) #Ja poga ir inputs true
+button_state2 = GPIO.input(18)
+button_state3 = GPIO.input(23)      
 try:
     while True:
-        button_state1 = GPIO.input(4) #Ja poga ir inputs true
-        button_state2 = GPIO.input(18)
-        button_state3 = GPIO.input(23)
+        a > 0
         print("Ja velies sanemt datus nospied -c-") #printejam,lai zinatu.
         if button_state1 == GPIO.LOW: #Ja nospiez pogu, daram to
                 GPIO.output(17,GPIO.HIGH)
@@ -71,6 +68,7 @@ try:
                 print("Ja velies beigt nospied. -e-")
         if keyboard.read_key() == "e": #ja nospiez uz klaviaturas jebkura bridi
                 break #beidz visu programmu
-        else :
+        else:
                 print("Kaut kas te nav tirs.")
                 
+
