@@ -24,10 +24,10 @@ a = 1
 
    
 while True:
+        button_state1 = GPIO.input(4) #Ja poga ir inputs true
+        button_state2 = GPIO.input(18)
+        button_state3 = GPIO.input(23)
         try:
-                button_state1 = GPIO.input(4) #Ja poga ir inputs true
-                button_state2 = GPIO.input(18)
-                button_state3 = GPIO.input(23)
                 print("Ja velies sanemt datus nospied -c-") #printejam,lai zinatu.
                 if button_state1 == GPIO.LOW: #Ja nospiez pogu, daram to
                         GPIO.output(17,GPIO.HIGH)
