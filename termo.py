@@ -48,6 +48,7 @@ try:
                         print(truncate(data.humidity)) #printejam mitrumu
                         print("""\t \t Ja velies redzet saglabatos datus, nospied
                         pogu 3""") #printejam tekstu
+                        time.sleep(0.3)
                 if button_state2 == GPIO.LOW:
                         GPIO.output(27,GPIO.HIGH)
                         GPIO.output(17,GPIO.HIGH)
@@ -60,16 +61,17 @@ try:
                         faila_saturs = f.read() #lasam datu failu
                         print(faila_saturs) #printejam, kas faila
                         f.close() #aizveram datu failu 
-                      
+                        time.sleep(0.3)
                
                 
                 if button_state1 == GPIO.LOW:
                         GPIO.output(17,GPIO.HIGH)
                         time.sleep(0.5)
                         GPIO.output(17,GPIO.LOW)
+                        time.sleep(0.3)
                         break
                 else:
-                        time.sleep(0.1)
+                        time.sleep(0.01)
 except KeyboardInterrupt:
                 print("/n")
 finally:
